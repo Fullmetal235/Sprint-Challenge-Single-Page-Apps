@@ -1,22 +1,33 @@
-import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 
+import EpisodeCard from './EpisodeCard'
 
- export default function EpisodeList (props) {
-  return (<div>
-    <Card >
-    <Image src={props} wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>{props}</Card.Header>
-      <Card.Meta>
-        <span className='date'>Status: {props}</span>
-      </Card.Meta>
-      <Card.Description>
-        <p>Species: {props}</p>
-        <p>Gender: {props}</p>
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-    </Card.Content>
-  </Card></div>)
-} 
+import styled from 'styled-components'
+
+const StyledEpisodeContainer = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin: 0 auto;
+`
+
+export default function EpisodesList() {
+
+    const [episode, setEpisode]= useState([])
+
+    useEffect(() => {
+        axios.get(`https://rickandmortyapi.com/api/episode/` )
+        .then(response => {
+            console.log('epsiode api', response.data.results)
+            setEpisode(response.data.results)
+        }).catch(error => {
+            console.log('Not getting info episodes from api', error)
+        })
+    },[])
+
+    return (<StyledEpisodeContainer>{episode.map(ep => 
+           <EpisodeCard key={ep.id} episode={ep}/>
+        )}</StyledEpisodeContainer>)
+
+}

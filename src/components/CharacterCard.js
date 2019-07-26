@@ -1,10 +1,11 @@
 import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
-export default function CharacterCard (props) {
 
-  return (<div><span>todo: location</span>
+
+export default function CharacterCard (props) {
+  return (<div>
     <Card >
-    <Image src={props.people.url} wrapped ui={false} />
+    <Image src={props.people.image} alt= 'character photos' wrapped ui={false} />
     <Card.Content>
       <Card.Header>{props.people.name}</Card.Header>
       <Card.Meta>
@@ -18,5 +19,4 @@ export default function CharacterCard (props) {
     <Card.Content extra>
     </Card.Content>
   </Card></div>)
-}	
-
+}

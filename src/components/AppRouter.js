@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import CharacterList from './CharacterList'
 import WelcomePage from './WelcomePage';
 import LocationsList from './LocationsList';
-import EpisodesList from './EpisodeList.js'
+import EpisodesList from './Episodes.js'
 
 export default function AppRouter() {
   return <div className="page-view ui bottom attached segment active tab">
