@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import styled from 'styled-components'
+
+ const StyledCardsContainer = styled.div`
+display: flex;
+`
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [character, setCharacter] = useState([])
@@ -18,7 +23,7 @@ export default function CharacterList() {
   return <section className='character-list grid-view'>
 
 <div>{character.map(person => {
-  return <CharacterCard key={person.id} people={person}/>
+  return <StyledCardsContainer><CharacterCard key={person.id} people={person}/></StyledCardsContainer>
 })}
 </div>
     </section>
