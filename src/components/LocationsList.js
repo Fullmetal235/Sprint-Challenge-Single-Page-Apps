@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import LocationCard from './LocationCard.js'
+import styled from 'styled-components'
 
- import LocationCard from './LocationCard.js'
-
+ const StyledLocationContainer = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin: 0 auto;
+`
  export default function LocationsList() {
 
 
@@ -18,10 +24,10 @@ import axios from 'axios'
        })
    },[])
 
-    return (<div>
+    return (<StyledLocationContainer>
        {location.map(local => 
            <LocationCard key={local.id} location={local}/>
        )}
-   </div>)
+       </StyledLocationContainer>)
 
 }	
